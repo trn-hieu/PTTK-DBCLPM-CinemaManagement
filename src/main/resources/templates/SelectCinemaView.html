@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Danh sách rạp chiếu</title>
+<link rel="icon" href="/images/icon.png">
+<link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
+<link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/script.js" ></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="margin: 0;display: flex;">
+<div th:replace="/MenuView :: header"> </div>
+<div  class ="wrapper-all">
+	<div class ="page-banner">
+		<div class="page-infor">
+			<div class="icon"><i class="fal fa-chevron-double-right fa-2x"></i></div>
+			<div class ="title">Lên lịch chiếu</div>
+		</div>
+		<div class="user-log">
+			<div class ="name" sec:authentication="principal.username">Trung Hiếu</div>
+			<div class="icon"><i class="fal fa-user-shield fa-2x"></i></div>
+		</div>
+	</div>	
+	<div style="background-color: #f1f1f1;height: 500px">
+		<div style="height: 15px;"></div>
+		<div class="container">
+		<!-- <form th:action="@{/showtime/create}" method="post"> -->
+			<div style="border: 1px solid #fff;background-color: #fff;">
+				<div style="align-items:center;display: flex;justify-content: space-between;padding: 10px 10px;">
+					<div id="cinema-suggest">Chọn một rạp chiếu để tiếp tục</div>
+					<div id="cinema-notify" style="color: red;display: none;font-size: 19px;">Vui lòng chọn một rạp chiếu</div>
+					<button id="button-confirm-cinema" type="submit" class="btn btn-outline-success">Tiếp theo<i style="margin-left: 5px;" class="fal fa-forward"></i></button>
+				</div>
+				
+			</div>	
+			<div class="row">
+				<div th:each="list : ${list}" class ="cinema-item">
+					<div class="inner">
+						<div  style="display: flex;justify-content: space-between;">
+							<div th:text= ${list.name} class="title"></div>
+							<input th:value =${list.id} class="cinema-checkbox" type="radio" name="cinema" value="fwef" required="required">
+							<i class="fas fa-check-circle fa-lg"></i>
+						</div>	
+						<div th:text= ${list.address} class="address"></div>
+						<div th:text= ${list.intro}></div>
+					</div>
+				</div>
+				
+			</div>
+		<!-- </form> -->	
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

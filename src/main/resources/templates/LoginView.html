@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Đăng nhập</title>
+<link rel="icon" href="/images/icon.png">
+<link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
+<link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/script.js" ></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="margin: 0;display: flex;font-family: 'Courier New', monospace">
+<div class ="log-background">
+	<div class="container" style="display: flex;justify-content: center;align-items: center;height: 100%">
+	<form th:action="@{/login}" method="post" id=login-form >
+		<div class ="log-form">
+			<img alt="" src="/images/icon.png" height="100px" width="100px" >
+			<div class ="title-small" >Quản lý rạp chiếu</div>
+			<div class="title">Đăng nhập</div>
+			<div id="notify" style="font-size: 12px;color: red;visibility: hidden;">Sai tên đăng nhập/mật khẩu</div>
+			<div class="input">
+				<div class= "input-login">
+					<!-- <div class="icon"><i class="fas fa-user-tie fa-2x"></i></div> -->
+					<input class="form-control" name="username" type="text" placeholder="Tên đăng nhập" required="required">
+				</div>
+				<div class= "input-login">
+					<!-- <div class="icon"><i class="fas fa-lock-alt fa-2x"></i></div> -->
+					<input class="form-control" name="password" type="password" placeholder="Mật khẩu" required="required">
+				</div>
+				<div style="width: 100%;margin:35px 10px ;">
+					<button type="submit" class="btn btn-success" >Đăng nhập</button>
+				</div>
+			</div>	
+		</div>
+	</form>	
+	</div>
+	
+	<script type="text/javascript">
+	let params = new URLSearchParams(window.location.search);
+	if(params.has('failed')){
+		$('#notify').css('visibility', 'visible');
+	}
+	</script>
+
+</div>
+<div>
+</div>
+</body>
+</html>

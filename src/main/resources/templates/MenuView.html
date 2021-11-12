@@ -1,0 +1,111 @@
+<div th:fragment="header" class="menu-bar">
+	<div style="height: 120px;width: 100%;border-bottom: 1px solid #FFFFFF;display: flex;justify-content: center;align-items: center;">
+		<h3 style="color: #FFFFFF">DANH MỤC</h3>
+	</div>
+	<div>
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-home-lg-alt fa-2x"></i></div>
+				<a th:href="@{/}" style="text-decoration: none;"><div class="title" >Trang chủ</div></a>
+			</div>
+		</div>
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-hotel fa-2x"></i></div>
+				<div class="title">Quản lý rạp chiếu</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Danh sách rạp chiếu</div>
+				</div>
+				<div class= "menu-sub">
+					<div>Sửa thông tin</div>
+				</div>
+		</div>
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-video fa-2x"></i></div>
+				<div class="title">Quản lý phòng chiếu</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Danh sách phòng chiếu</div>
+			</div>
+		</div>
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-film-alt fa-2x"></i></div>
+				<div class="title">Quản lý phim</div>
+			</div>
+			<div class= "menu-sub">
+				<div>Danh sách phim</div>
+			</div>
+			<div class= "menu-sub">
+				<div>Thêm phim mới</div>
+			</div>
+			<div class= "menu-sub">
+				<div>Sửa phim</div>
+			</div>
+		</div>
+		<div class="menu-item-wrap">
+			<div class="menu-item " >
+				<div class="icon"><i class="fal fa-calendar fa-2x"></i></div>
+				<div class="title">Quản lý lịch chiếu</div>
+			</div>
+			<div class= "menu-sub">
+				<a th:href="@{/showtime/all}" style="text-decoration:none"><div>Xem lịch chiếu</div></a>
+			</div>
+			<div class= "menu-sub">
+				<a th:href="@{/cinema/all}" style="text-decoration:none"><div>Lên lịch chiếu</div></a>
+			</div>
+			<div class= "menu-sub">
+				<div>Sửa lịch chiếu</div>
+			</div>
+		</div>
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-ticket-alt fa-2x"></i></div>
+				<div class="title">Đặt vé</div>
+			</div>
+		</div>
+		
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-burger-soda fa-2x"></i></div>
+				<div class="title">Đồ ăn vặt</div>
+			</div>
+		</div>
+		
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-gifts fa-2x"></i></div>
+				<div class="title">Đổi quà</div>
+			</div>
+		</div>
+		
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-undo-alt fa-2x"></i></div>
+				<div class="title">Trả vé</div>
+			</div>
+		</div>
+		
+		<div class="menu-item-wrap">
+			<div class="menu-item">
+				<div class="icon"><i class="fal fa-analytics fa-2x"></i></div>
+				<div class="title">Thống kê</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Thống kê doanh thu</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Thống kê số vé</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Thống kê mặt hàng bán kèm</div>
+			</div>
+			<div class= "menu-sub">
+					<div>Thống kê khách hàng</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
