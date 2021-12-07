@@ -44,8 +44,7 @@ public class ShowtimeController {
 		model.addAttribute("movies", movies);
 		model.addAttribute("rooms", rooms);
 		model.addAttribute("cinemaid", id);
-		
-		//int check  = showtimeRepo.checkDuplicate(1, new SimpleDateFormat("yyyy-mm-dd").parse("2021-11-10"), "09:00", "12:00");
+
  		return "AddShowtimeView";
 	}
 	
@@ -57,9 +56,7 @@ public class ShowtimeController {
 		System.out.println(movie +" "+room+" "+date+" "+starttime+" "+endtime+" "+price);
 		
 		int checkDB = showtimeRepo.checkDuplicate(room, date, starttime, endtime);
-		boolean checkCurrentDate = Showtime.checkDate(date, starttime);
-		//System.out.println("redirect:"+request.getHeader("Referer"));
-		if(checkCurrentDate || checkDB > 0)
+		if(checkDB > 0)
 			return "redirect:"+request.getHeader("Referer")+"?failed";
 		
 		long ticketPrice = Long.parseLong(price.replaceAll(",", ""));
@@ -69,11 +66,18 @@ public class ShowtimeController {
 	}
 	
 	@GetMapping("all")
-	public String getAll(Model model) {
-		List<Showtime> list = showtimeRepo.getTodayShowtime();
-		Collections.sort(list);
-		
-		model.addAttribute("listAll", Showtime.setStatusList(list));
+	public String getResult(Model model, @RequestParam(name = "date",required = false)String date,
+			@RequestParam(name = "start",required = false)String start, @RequestParam(name = "end",required = false)String end,
+			@RequestParam(name = "room",required = false)String room) {
+
+		if(date != null || start!=null || end!=null ) {
+			if(date.equals("")) date=null;
+			if(start.equals("")) start=null;
+			if(end.equals("")) end=null;
+			//if(room.equals(" ")) room=null;
+		}
+		List<Showtime> list = showtimeRepo.search(date, start, end, room);
+		model.addAttribute("listAll", list);
 		return "ShowtimeList";
 	}
 }

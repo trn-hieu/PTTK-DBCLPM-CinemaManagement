@@ -7,11 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -28,11 +30,11 @@ public class Showtime implements Comparable<Showtime>{
 	private String startTime;
 	private String endTime;
 	
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "movieid")
 	private Movie movie;
 	
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "roomid")
 	private Room room;
 	
@@ -54,37 +56,37 @@ public class Showtime implements Comparable<Showtime>{
 		this.room = room;
 		this.price= price;
 	}
-	public static boolean checkDate(String date, String starttime) throws Exception {
-		Date currentTime = new SimpleDateFormat("yyy-mm-dd hh:mm").getCalendar().getTime();
-		Date dateInput = new SimpleDateFormat("yyy-mm-dd hh:mm").parse(date+" "+starttime);
-		if(dateInput.before(currentTime)) return true;
-		else return false;
-	}
+//	public static boolean checkDate(String date, String starttime) throws Exception {
+//		Date currentTime = new SimpleDateFormat("yyy-mm-dd hh:mm").getCalendar().getTime();
+//		Date dateInput = new SimpleDateFormat("yyy-mm-dd hh:mm").parse(date+" "+starttime);
+//		if(dateInput.before(currentTime)) return true;
+//		else return false;
+//	}
 	
 	
-	public static List<Showtime> setStatusList(List<Showtime> list){
-		Calendar c = Calendar.getInstance();
-		String currentTime = String.format("%02d", c.getTime().getHours()) +":"+String.format("%02d", c.getTime().getMinutes());
-		List<Showtime> result =new ArrayList<>();
-		for(int i=0;i<list.size();i++) {
-			String star =list.get(i).getStartTime();
-			String end = list.get(i).getEndTime();
-			if(star.compareTo(currentTime) <=0 && (end.compareTo(currentTime) >= 0  || end.compareTo(star) < 0 )) {
-				Showtime temp = list.get(i);
-				temp.setStatus("Đang chiếu");
-				result.add(temp);
-			}else if(star.compareTo(currentTime) > 0) {
-				Showtime temp = list.get(i);
-				temp.setStatus("Sắp chiếu");
-				result.add(temp);
-			}else {
-				Showtime temp = list.get(i);
-				temp.setStatus("Đã chiếu");
-				result.add(temp);
-			}
-		}
-		return result;
-	}
+//	public static List<Showtime> setStatusList(List<Showtime> list){
+//		Calendar c = Calendar.getInstance();
+//		String currentTime = String.format("%02d", c.getTime().getHours()) +":"+String.format("%02d", c.getTime().getMinutes());
+//		List<Showtime> result =new ArrayList<>();
+//		for(int i=0;i<list.size();i++) {
+//			String star =list.get(i).getStartTime();
+//			String end = list.get(i).getEndTime();
+//			if(star.compareTo(currentTime) <=0 && (end.compareTo(currentTime) >= 0  || end.compareTo(star) < 0 )) {
+//				Showtime temp = list.get(i);
+//				temp.setStatus("Đang chiếu");
+//				result.add(temp);
+//			}else if(star.compareTo(currentTime) > 0) {
+//				Showtime temp = list.get(i);
+//				temp.setStatus("Sắp chiếu");
+//				result.add(temp);
+//			}else {
+//				Showtime temp = list.get(i);
+//				temp.setStatus("Đã chiếu");
+//				result.add(temp);
+//			}
+//		}
+//		return result;
+//	}
 	
 	@Override
 	public int compareTo(Showtime arg0) {

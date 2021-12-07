@@ -26,6 +26,9 @@ public class Room {
 	@OneToMany(mappedBy = "room")
 	private List<Seat> seats;
 	
+	@OneToMany(mappedBy = "room")
+	private List<Showtime> showtimes;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cinemaid")
 	private Cinema cinema;
@@ -89,6 +92,14 @@ public class Room {
 
 	public void setCinema(Cinema cinema) {
 		this.cinema = cinema;
+	}
+
+	public List<Showtime> getShowtimes() {
+		return showtimes;
+	}
+
+	public void setShowtimes(List<Showtime> showtimes) {
+		this.showtimes = showtimes;
 	}
 	
 	

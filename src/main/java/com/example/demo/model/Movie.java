@@ -1,10 +1,14 @@
 package com.example.demo.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +29,9 @@ public class Movie {
 	
 	@Column(name = "description")
 	private String description;
+	
+	@OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+	private List<Showtime> showtimes;
 
 	public Movie() {
 		super();
@@ -76,6 +83,14 @@ public class Movie {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Showtime> getShowtimes() {
+		return showtimes;
+	}
+
+	public void setShowtimes(List<Showtime> showtimes) {
+		this.showtimes = showtimes;
 	}
 	
 	

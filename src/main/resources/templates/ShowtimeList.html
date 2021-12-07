@@ -28,6 +28,15 @@
 		
 	<div style="width: 100%;height: 30px;background-color: #f1f1f1;"></div>
 	<div class ="container fix-width" >
+		<div style="">
+			<form th:action="@{/showtime/all}" method="get">
+				<input type="date" name="date">
+				
+				<input type="time" name="start">
+				<input type="time" name="end">
+				<button type="submit">submit</button>
+			</form>
+		</div>
 		<div class="filter">
 			<div class="filter-item clicked">
 				<div>Tất cả</div>

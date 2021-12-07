@@ -23,7 +23,7 @@
 <body style="margin: 0;display: flex;position: relative;">
 	<div style="margin: 12px 0;left:30%;">
 		<div class="alert alert-warning" role="alert" style="z-index: 9999;display: none">
-		  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+		  <strong>Cảnh báo!</strong> Thời gian chiếu không hợp lệ
 		</div>
 		
 		<div th:if="${param.failed}" class="alert alert-danger"  style="z-index: 9999;">Tạo lịch chiếu không thành công</div>
@@ -51,11 +51,11 @@
 	<div style="background-color: #f1f1f1;height: 505px">
 		<div style="height: 15px;"></div>
 		<div class="container">    
-		<form th:action="@{/showtime/add}" method="post" id="showtime-add-form" >           <!-- onsubmit="return checkDate()" -->
+		<form th:action="@{/showtime/add}" method="post" id="showtime-add-form"  onsubmit="return checkDate()">           <!-- onsubmit="return checkDate()" -->
 			<div style="border: 1px solid #fff;background-color: #fff;">
 				<div style="align-items:center;display: flex;justify-content: space-between;padding: 10px 10px;">
 					<div style="color: red">Vui lòng điền thông tin lịch chiếu</div>
-					<button type="submit"  class="btn btn-outline-success">Tiếp theo<i style="margin-left: 5px;" class="fal fa-forward"></i></button>
+					<button type="submit"  class="btn btn-outline-success">Thêm lịch chiếu<i style="margin-left: 5px;" class="fal fa-forward"></i></button>
 				</div>
 				
 			</div>	
@@ -69,36 +69,26 @@
 					</div>
 					<div class="wrapper ">
 						<label>Ngày chiếu</label>
-						<input id="txtDate" class="form-control" type="date" name="date" required="required" 
-							oninvalid="this.setCustomValidity('Vui lòng chọn một ngày')"
-  							oninput="this.setCustomValidity('')">
+						<input id="txtDate" class="form-control" type="date" name="date" required="required" >
 					</div>
 					<div class="wrapper ">
 						<label>Giờ bắt đầu chiếu</label>
-						<input id= "start" class="form-control" type="time" name="starttime" required="required"
-							oninvalid="this.setCustomValidity('Vui lòng chọn thời gian chiếu')"
-  							oninput="this.setCustomValidity('')">
+						<input id= "start" class="form-control" type="time" name="starttime" required="required">
 					</div>
 					<div class="wrapper ">
 						<label>Giờ kết thúc chiếu</label>
-						<input id= "end" class="form-control" type="time" name="endtime" required="required"
-							oninvalid="this.setCustomValidity('Vui lòng chọn thời gian chiếu')"
-  							oninput="this.setCustomValidity('')">
+						<input id= "end" class="form-control" type="time" name="endtime" required="required">
 					</div>
 					<div class="wrapper ">
 						<label>Chọn phòng chiếu</label>
-						<select class="form-control" type="text" name="room" required="required"
-							oninvalid="this.setCustomValidity('Vui lòng chọn phòng chiếu')"
-  							oninput="this.setCustomValidity('')">
+						<select class="form-control" type="text" name="room" required="required">
 							<option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name}"></option>
 						</select>
 					</div>
 					<div class="wrapper ">
 						<label>Giá vé (VND)</label>
 						<input id="showtime-curency" name="price" onchange="currency_format()" class="form-control" type="text" 
-							placeholder="Nhập giá vé" required="required"
-							oninvalid="this.setCustomValidity('Vui lòng nhập giá vé')"
-  							oninput="this.setCustomValidity('')">
+							placeholder="Nhập giá vé" required="required">
 					</div>
 				</div>
 				
