@@ -32,8 +32,6 @@ public class Role {
 		this.name = name;
 	}
 	
-	
-
 	public long getId() {
 		return id;
 	}

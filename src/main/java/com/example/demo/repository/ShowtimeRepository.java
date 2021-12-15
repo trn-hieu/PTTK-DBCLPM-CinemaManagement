@@ -16,9 +16,9 @@ import com.example.demo.model.Showtime;
 public interface ShowtimeRepository extends JpaRepository<Showtime, Long>{
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO	showtime(date, end_time, start_time,movieid, roomid, price)"
+	@Query(value = "INSERT INTO	showtime(date, start_time, end_time,movieid, roomid, price)"
 			+ "VALUES (?1, ?2, ?3, ?4, ?5, ?6)",nativeQuery = true)
-	int save(String date, String endtime, String startime, long movie, long room, long price);
+	int save(String date, String starttime, String endtime, long movie, long room, long price);
 	
 	
 	@Query(value = 

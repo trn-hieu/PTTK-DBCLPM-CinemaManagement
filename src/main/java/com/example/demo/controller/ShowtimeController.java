@@ -53,16 +53,16 @@ public class ShowtimeController {
 			, @RequestParam("starttime") String starttime, @RequestParam("endtime") String endtime
 			, @RequestParam("room") long room
 			, @RequestParam("price") String price, HttpServletRequest request) throws Exception {
-		System.out.println(movie +" "+room+" "+date+" "+starttime+" "+endtime+" "+price);
+		System.out.println(movie +" "+room+" "+date+" "+starttime+" "+endtime+" "+price+request.getHeader("Referer"));
 		
 		int checkDB = showtimeRepo.checkDuplicate(room, date, starttime, endtime);
 		if(checkDB > 0)
 			return "redirect:"+request.getHeader("Referer")+"?failed";
 		
 		long ticketPrice = Long.parseLong(price.replaceAll(",", ""));
-		int saveResult =showtimeRepo.save(date,endtime, starttime,movie,room, ticketPrice);
+		int saveResult =showtimeRepo.save(date,starttime, endtime,movie,room, ticketPrice);
 		System.out.println(saveResult);
-		return"redirect:/";
+		return"redirect:/?success";
 	}
 	
 	@GetMapping("all")
