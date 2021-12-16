@@ -65,19 +65,19 @@ public class ShowtimeController {
 		return"redirect:/?success";
 	}
 	
-	@GetMapping("all")
-	public String getResult(Model model, @RequestParam(name = "date",required = false)String date,
-			@RequestParam(name = "start",required = false)String start, @RequestParam(name = "end",required = false)String end,
-			@RequestParam(name = "room",required = false)String room) {
-
-		if(date != null || start!=null || end!=null ) {
-			if(date.equals("")) date=null;
-			if(start.equals("")) start=null;
-			if(end.equals("")) end=null;
-			//if(room.equals(" ")) room=null;
-		}
-		List<Showtime> list = showtimeRepo.search(date, start, end, room);
-		model.addAttribute("listAll", list);
-		return "ShowtimeList";
-	}
+//	@GetMapping("all")
+//	public String getResult(Model model, @RequestParam(name = "date",required = false)String date,
+//			@RequestParam(name = "start",required = false)String start, @RequestParam(name = "end",required = false)String end,
+//			@RequestParam(name = "room",required = false)String room) {
+//
+//		if(date != null || start!=null || end!=null ) {
+//			if(date.equals("")) date=null;
+//			if(start.equals("")) start=null;
+//			if(end.equals("")) end=null;
+//			//if(room.equals(" ")) room=null;
+//		}
+//		List<Showtime> list = showtimeRepo.search(date, start, end, room);
+//		model.addAttribute("listAll", list);
+//		return "ShowtimeList";
+//	}
 }

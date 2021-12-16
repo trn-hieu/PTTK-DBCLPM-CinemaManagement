@@ -14,13 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name = "showtime")
-public class Showtime implements Comparable<Showtime>{
+public class Showtime {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -37,6 +38,9 @@ public class Showtime implements Comparable<Showtime>{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "roomid")
 	private Room room;
+	
+	@OneToMany(mappedBy = "showtime")
+	private List<Ticket> tickets;
 	
 	private long price;
 	
@@ -88,11 +92,11 @@ public class Showtime implements Comparable<Showtime>{
 //		return result;
 //	}
 	
-	@Override
-	public int compareTo(Showtime arg0) {
-		// TODO Auto-generated method stub
-		return (arg0.getDate()+" "+arg0.startTime).compareTo(date+" "+startTime);
-	}
+//	@Override
+//	public int compareTo(Showtime arg0) {
+//		// TODO Auto-generated method stub
+//		return (arg0.getDate()+" "+arg0.startTime).compareTo(date+" "+startTime);
+//	}
 
 	public long getId() {
 		return id;

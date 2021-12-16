@@ -18,7 +18,7 @@ public class MemberCard {
 	@Column(name = "cardnumber")
 	private String cardNumber;
 	
-	@Transient
+	@Column(name = "point")
 	private long point;
 
 	public MemberCard(String cardNumber) {

@@ -25,11 +25,13 @@ public class MainController {
 	}
 	
 	@PostMapping("/login")
-	public String checkLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-		User user = userRepository.findByUsername(username);
-		if(user == null || !password.equals(user.getPassword()))
-			return "redirect:/login?failed";
+	public String doLogin(@RequestParam("username") String username, @RequestParam("password") String pass) {
+//		User user = userRepository.findByUsername(username);
+//		if(user == null || !password.equals(user.getPassword()))
+//			return "redirect:/login?failed";
 		
+		if(!userRepository.checkLogin(username, pass))
+			return "redirect:/login?failed";
 		return "redirect:/";
 	}
 }

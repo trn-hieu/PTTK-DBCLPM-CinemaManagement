@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,6 +24,9 @@ public class Customer extends Person {
 	@OneToOne
 	@JoinColumn(name = "membercardid")
 	private MemberCard memberCard;
+	
+	@OneToMany(mappedBy = "customer")
+	private List<Bill> bills;
 	
 	public Customer() {
 		super();
@@ -58,5 +63,15 @@ public class Customer extends Person {
 	public void setMemberCard(MemberCard memberCard) {
 		this.memberCard = memberCard;
 	}
+
+	public List<Bill> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
+	
+	
 	
 }

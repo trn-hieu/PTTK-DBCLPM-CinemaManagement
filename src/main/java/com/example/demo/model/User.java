@@ -23,6 +23,8 @@ public class User extends Person{
 	@Column(name = "password")
 	private String password;
 	
+	private String position;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "users_roles",
@@ -37,11 +39,12 @@ public class User extends Person{
 	}
 
 	public User(String name, Date dateofbirth, String phone, String email, String username, String password,
-			List<Role> roles) {
+			List<Role> roles, String position) {
 		super(name, dateofbirth, phone, email);
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
+		this.position= position;
 	}
 
 	public User(String username, String password,
@@ -73,6 +76,14 @@ public class User extends Person{
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 	
